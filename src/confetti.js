@@ -361,7 +361,9 @@
       gravity: opts.gravity * 3,
       ovalScalar: 0.6,
       scalar: opts.scalar,
-      flat: opts.flat
+      flat: opts.flat,
+      frontColor: opts.frontColor || 'red',
+      backColor: opts.backColor || 'blue' 
     };
   }
 
@@ -396,7 +398,11 @@
     var x2 = fetti.wobbleX + (fetti.random * fetti.tiltCos);
     var y2 = fetti.wobbleY + (fetti.random * fetti.tiltSin);
 
-    context.fillStyle = 'rgba(' + fetti.color.r + ', ' + fetti.color.g + ', ' + fetti.color.b + ', ' + (1 - progress) + ')';
+    // context.fillStyle = 'rgba(' + fetti.color.r + ', ' + fetti.color.g + ', ' + fetti.color.b + ', ' + (1 - progress) + ')';
+    const isFront = Math.cos(fetti.tiltAngle) > 0;
+    context.fillStyle = isFront ? fetti.frontColor : fetti.backColor;
+    context.globalAlpha = 1 - progress;
+
 
     context.beginPath();
 
@@ -592,7 +598,9 @@
             gravity: gravity,
             drift: drift,
             scalar: scalar,
-            flat: flat
+            flat: flat,
+            frontColor: 'red',
+            backColor: 'blue'
           })
         );
       }

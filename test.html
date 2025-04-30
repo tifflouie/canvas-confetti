@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confetti Test</title>
+</head>
+<body>
+  <button onclick="launchConfetti()">Launch Confetti</button>
+
+  <script src="./dist/confetti.browser.js"></script>
+  <script>
+    function launchConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 60,
+        shapes: ['square'],
+        scalar: 1,
+        flat: false
+      });
+    }
+  </script>
+</body>
+</html>
